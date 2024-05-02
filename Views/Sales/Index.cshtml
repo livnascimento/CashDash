@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CashDash.Models.Sale>
+
+@{
+    ViewData["Title"] = "Vendas";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <h1>Vendas</h1>
+    </div>
+    <div class="col-md-4">
+        <a asp-action="Create" class="btn btn-primary float-end">Create New</a>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Data da Venda
+            </th>
+            <th>
+                Produto
+            </th>
+            <th>
+                Cliente
+            </th>
+            <th>
+                Vendedor
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SaleDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SaleID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.SaleID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.SaleID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
