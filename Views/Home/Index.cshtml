@@ -1,8 +1,116 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<Sale>;
+
+@{
+    ViewData["Title"] = "Início";
+
+    var employeesCount = ViewBag.EmployeesCount;
+    var salesCount = ViewBag.SalesCount;
+    var customerCount = ViewBag.CustomerCount;
+    var productCount = ViewBag.ProductCount;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h3 class="my-4">Indicadores</h3>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <div class="col">
+        <div class="card text-bg-primary rounded-3 border-0">
+            <div class="card-body">
+                <h5 class="card-title">@salesCount</h5>
+                <p class="card-text">
+                    @if (salesCount < 2)
+                    {
+                        @Html.Raw("venda")
+                        ;
+                    }
+                    else
+                    {
+                        @Html.Raw("vendas")
+                        ;
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-bg-primary rounded-3 border-0">
+            <div class="card-body">
+                <h5 class="card-title">@employeesCount</h5>
+                <p class="card-text">
+                    @if (employeesCount < 2)
+                    {
+                        @Html.Raw("funcionário")
+                        ;
+                    }
+                    else
+                    {
+                        @Html.Raw("funcionários")
+                        ;
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-bg-primary rounded-3 border-0">
+            <div class="card-body">
+                <h5 class="card-title">@customerCount</h5>
+                <p class="card-text">
+                    @if (customerCount < 2)
+                    {
+                        @Html.Raw("cliente")
+                        ;
+                    }
+                    else
+                    {
+                        @Html.Raw("clientes")
+                        ;
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-bg-primary rounded-3 border-0">
+            <div class="card-body">
+                <h5 class="card-title">@productCount</h5>
+                <p class="card-text">
+                    @if (productCount < 2)
+                    {
+                        @Html.Raw("produto")
+                        ;
+                    }
+                    else
+                    {
+                        @Html.Raw("produtos")
+                        ;
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
+<h3 class="my-4">Últimas vendas</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Produto</th>
+            <th scope="col">Vendedor</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Data e hora</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var sale in Model)
+            {
+                <tr>
+                    <td>@sale.Product.Title</td>
+                    <td>@sale.Employee.Name</td>
+                    <td>@sale.Customer.Name</td>
+                    <td>@sale.SaleDateTime</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
