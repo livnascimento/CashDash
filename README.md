@@ -8,7 +8,7 @@ O CashDash é um sistema de controle de vendas. Este código é a solução da a
 
 ## 🖼️ Pré-visualização
 
-<img width="950" alt="Screenshot 2024-05-02 141543" src="https://github.com/livnascimento/CashDash/assets/51425339/ec3ff0c9-a9e5-43ef-b847-9ad3d861d282">
+![Animation](https://github.com/livnascimento/CashDash/assets/51425339/45492e5f-6900-4d2f-9419-01bcdfb1965e)
 
 ## 🔗 Principais endpoints
 
